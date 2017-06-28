@@ -1,0 +1,4 @@
+G:\LiDAR_Scaling_Project\LAS_files\bzs_high_topo_site8\1861000_293000.las
+G:\LiDAR_Scaling_Project\LAS_files\bzs_high_topo_site8\1861000_293500.las
+G:\LiDAR_Scaling_Project\LAS_files\bzs_high_topo_site8\1861500_293000.las
+G:\LiDAR_Scaling_Project\LAS_files\bzs_high_topo_site8\1861500_293500.las

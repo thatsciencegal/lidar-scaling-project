@@ -1,0 +1,4 @@
+G:\LiDAR_Scaling_Project\LAS_files\bzn_low_topo_site1\1909500_273000.las
+G:\LiDAR_Scaling_Project\LAS_files\bzn_low_topo_site1\1909500_273500.las
+G:\LiDAR_Scaling_Project\LAS_files\bzn_low_topo_site1\1910000_273000.las
+G:\LiDAR_Scaling_Project\LAS_files\bzn_low_topo_site1\1910000_273500.las
