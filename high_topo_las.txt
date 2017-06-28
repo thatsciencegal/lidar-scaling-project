@@ -1,0 +1,4 @@
+f:\LiDAR_Scaling_Project\LAS_files\1859000_294000.las
+f:\LiDAR_Scaling_Project\LAS_files\1859000_294500.las
+f:\LiDAR_Scaling_Project\LAS_files\1859500_294000.las
+f:\LiDAR_Scaling_Project\LAS_files\1859500_294500.las
