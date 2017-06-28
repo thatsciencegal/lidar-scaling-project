@@ -18,13 +18,13 @@ file.names <- dir(in.path, pattern = ".las", full.names = TRUE)
 raster_sizes <- c(1, 5, 10, 15, 30, 60, 120, 250, 500, 1000)
 
 # empty data frame to store means of the lidar data
-collated.lidar.data <- data.frame(tile = character(),
+collated.lidar.data <- data.frame(tile = character(), 
                                   resolution = numeric(),
                                   max_height = numeric(),
                                   mean_height = numeric(),
                                   rugosity = numeric(),
                                   vertical_diversity = numeric(),
-                                  openness = numeric())                                  )
+                                  openness = numeric())                                  
 
 for(i in seq_along(file.names)){
   # read in the current file
@@ -35,7 +35,7 @@ for(i in seq_along(file.names)){
   
   for(j in length(raster_sizes)){
     # calculate the lidar metrics for each spatial resolution
-    print(paste0("Working on grid size: ", raster_sizes[j])
+    print(paste0("Working on grid size: ", raster_sizes[j]))
     dtm = grid_terrain(lidar_in, res = 5, method = "knnidw")
     las_norm <- lasnormalize(lidar_in, dtm)
     las_norm@data$Z[las_norm@data$Z <0] <- 0
