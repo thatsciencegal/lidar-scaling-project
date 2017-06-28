@@ -18,3 +18,4 @@ Data/DEMs/*.las
 Data/DTM/*.las
 Data/raw_las*.las
 LAS_files/
+.Rproj.user
