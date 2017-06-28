@@ -18,13 +18,9 @@ file.names <- dir(in.path, pattern = ".las", full.names = TRUE)
 raster_sizes <- c(1, 5, 10, 15, 30, 60, 120, 250, 500, 1000)
 
 # empty data frame to store means of the lidar data
-collated.lidar.data <- data.frame(tile = character(), 
-                                  resolution = numeric(),
-                                  max_height = numeric(),
-                                  mean_height = numeric(),
-                                  rugosity = numeric(),
-                                  vertical_diversity = numeric(),
-                                  openness = numeric())                                  
+lidar.data.matrix <- matrix(ncol = 7, nrow = 600)
+
+lidar.data.names <- c(tile, resolution, max_height, mean_height, rugosity, vertical_diversity, openness)                                  
 
 for(i in seq_along(file.names)){
   # read in the current file
@@ -46,13 +42,13 @@ for(i in seq_along(file.names)){
     write.csv(normalized_metrics, out.path, file=paste(current.file,raster_sizes[j], sep = "_"))
     
     # add data to the analysis csv
-    collated.lidar.data$tile[j] <- current.file
-    collated.lidar.data$resolution[j] <- raster_sizes[j]
-    collated.lidar.data$max_height[j] <- mean(normalized_metrics$MAXHEIGHTGOESHERE)
-    collated.lidar.data$mean_height[j] <- mean(normalized_metrics$MEANHEIGHTGOESHERE)
-    collated.lidar.data$rugosity[j] <- mean(normalized_metrics$RUGOSITYGOESHERE)
-    collated.lidar.data$vertical_diversity[j] <- mean(normalized_metrics$VERTICALDIVERSITYGOESHERE)
-    collated.lidar.data$openness[j] <- mean(normalized_metrics$OPENNESSGOESHERE)
+    lidar.data.matrix[j,1] <- current.file
+    lidar.data.matrix[j,2] <- raster_sizes[j]
+    lidar.data.matrix[j,3] <- mean(normalized_metrics$zmax, na.rm=T)
+    lidar.data.matrix[j,4] <- mean(normalized_metrics$zmean, na.rm=T)
+    lidar.data.matrix[j,5] <- sd(normalized_metrics$zmax, na.rm=T)
+    lidar.data.matrix[j,6] <- mean(normalized_metrics$zentropy, na.rm=T)
+    lidar.data.matrix[j,7] <- mean(normalized_metrics$pground, na.rm=T)
   }
   
   # get total run time for each iteration
@@ -62,4 +58,6 @@ for(i in seq_along(file.names)){
   
 }
 
+#Coerce the matrix into a data frame
+collated.lidar.data <- data.frame(lidar.data.matrix, row.names = lidar.data.names)
 write.csv(collated.lidar.data, out.path, file = "collated.lidar.metrics")
